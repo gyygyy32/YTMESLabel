@@ -56,6 +56,14 @@
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.grd = new System.Windows.Forms.DataGridView();
+            this.ddlIType = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtIGrade = new System.Windows.Forms.TextBox();
+            this.txtLowerIPM = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txtUpperIPM = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grd)).BeginInit();
@@ -63,6 +71,14 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtLowerIPM);
+            this.groupBox1.Controls.Add(this.label12);
+            this.groupBox1.Controls.Add(this.txtUpperIPM);
+            this.groupBox1.Controls.Add(this.label13);
+            this.groupBox1.Controls.Add(this.txtIGrade);
+            this.groupBox1.Controls.Add(this.label11);
+            this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.Controls.Add(this.ddlIType);
             this.groupBox1.Controls.Add(this.txtProductType);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.btnDel);
@@ -93,7 +109,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(1668, 144);
+            this.groupBox1.Size = new System.Drawing.Size(1668, 182);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "信息";
@@ -119,7 +135,7 @@
             // btnDel
             // 
             this.btnDel.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnDel.Location = new System.Drawing.Point(259, 97);
+            this.btnDel.Location = new System.Drawing.Point(259, 142);
             this.btnDel.Margin = new System.Windows.Forms.Padding(4);
             this.btnDel.Name = "btnDel";
             this.btnDel.Size = new System.Drawing.Size(100, 29);
@@ -167,7 +183,7 @@
             // btnEdit
             // 
             this.btnEdit.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnEdit.Location = new System.Drawing.Point(140, 97);
+            this.btnEdit.Location = new System.Drawing.Point(140, 142);
             this.btnEdit.Margin = new System.Windows.Forms.Padding(4);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(100, 29);
@@ -180,7 +196,7 @@
             // btnAdd
             // 
             this.btnAdd.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnAdd.Location = new System.Drawing.Point(22, 97);
+            this.btnAdd.Location = new System.Drawing.Point(22, 142);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(4);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(100, 29);
@@ -337,11 +353,11 @@
             // 
             this.groupBox2.Controls.Add(this.grd);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox2.Location = new System.Drawing.Point(0, 144);
+            this.groupBox2.Location = new System.Drawing.Point(0, 182);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox2.Size = new System.Drawing.Size(1668, 438);
+            this.groupBox2.Size = new System.Drawing.Size(1668, 400);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "列表";
@@ -354,9 +370,86 @@
             this.grd.Margin = new System.Windows.Forms.Padding(4);
             this.grd.Name = "grd";
             this.grd.RowTemplate.Height = 23;
-            this.grd.Size = new System.Drawing.Size(1660, 412);
+            this.grd.Size = new System.Drawing.Size(1660, 374);
             this.grd.TabIndex = 2;
             this.grd.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grd_CellClick);
+            // 
+            // ddlIType
+            // 
+            this.ddlIType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlIType.FormattingEnabled = true;
+            this.ddlIType.Items.AddRange(new object[] {
+            "",
+            "Imp",
+            "Isc"});
+            this.ddlIType.Location = new System.Drawing.Point(119, 94);
+            this.ddlIType.Name = "ddlIType";
+            this.ddlIType.Size = new System.Drawing.Size(133, 23);
+            this.ddlIType.TabIndex = 28;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(19, 97);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(82, 15);
+            this.label10.TabIndex = 29;
+            this.label10.Text = "电流类型：";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(259, 97);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(82, 15);
+            this.label11.TabIndex = 30;
+            this.label11.Text = "电流挡位：";
+            // 
+            // txtIGrade
+            // 
+            this.txtIGrade.Location = new System.Drawing.Point(321, 92);
+            this.txtIGrade.Margin = new System.Windows.Forms.Padding(4);
+            this.txtIGrade.Name = "txtIGrade";
+            this.txtIGrade.Size = new System.Drawing.Size(132, 25);
+            this.txtIGrade.TabIndex = 31;
+            // 
+            // txtLowerIPM
+            // 
+            this.txtLowerIPM.Location = new System.Drawing.Point(563, 94);
+            this.txtLowerIPM.Margin = new System.Windows.Forms.Padding(4);
+            this.txtLowerIPM.Name = "txtLowerIPM";
+            this.txtLowerIPM.Size = new System.Drawing.Size(132, 25);
+            this.txtLowerIPM.TabIndex = 35;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(473, 97);
+            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(82, 15);
+            this.label12.TabIndex = 34;
+            this.label12.Text = "电流下限：";
+            // 
+            // txtUpperIPM
+            // 
+            this.txtUpperIPM.Location = new System.Drawing.Point(819, 94);
+            this.txtUpperIPM.Margin = new System.Windows.Forms.Padding(4);
+            this.txtUpperIPM.Name = "txtUpperIPM";
+            this.txtUpperIPM.Size = new System.Drawing.Size(132, 25);
+            this.txtUpperIPM.TabIndex = 33;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(723, 99);
+            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(82, 15);
+            this.label13.TabIndex = 32;
+            this.label13.Text = "电流上限：";
             // 
             // PrintConfig
             // 
@@ -407,5 +500,13 @@
         private System.Windows.Forms.Button btnDel;
         private System.Windows.Forms.TextBox txtProductType;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txtLowerIPM;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox txtUpperIPM;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox txtIGrade;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ComboBox ddlIType;
     }
 }

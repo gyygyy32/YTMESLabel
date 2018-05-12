@@ -54,6 +54,10 @@ namespace MESLabel
             + "`Moduleapp`, "
             + "`ProductFamily`, "
             + "`createuser`, "
+            + "`IType`, "
+            + "`Igrade`, "
+            + "`upperimp`, "
+            + "`lowerimp`, "
             + "`createtime`) "
             + "VALUES "
             + "(" + list.Pmax + ", "
@@ -68,7 +72,11 @@ namespace MESLabel
             + "'" + list.Fusemax + "', "
             + "'" + list.ModuleApp + "', "
             + "'" + "ProductFamily" + "', "
-            + "'" + "createuser" + "', "
+            + "'" + "Admin" + "', "
+            + "'" + list.IType + "', "
+            + "'" + list.IGrade + "', "
+            + "" + list.UpperIMP + ", "
+            + "" + list.LowerIMP + ", "
             + " sysdate()); ";
 
             MysqlHelp.ExecuteNonquery(MysqlHelp.MySqlconn, sql, ref result);
@@ -81,6 +89,47 @@ namespace MESLabel
                 return "fail";
             }
         }
+
+        //查询电流范围是否存在 add by xue lei on 2018-5-23
+        public string ExistIMP(DataList list)
+        {
+            string result = "";
+            string sql = "select Pmax from js_mes.rt_mid_flash_label where  ProductType = '" + list.ProductType + "' and pmax='" + list.Pmax + "'   and( (" + list.LowerIMP + ">= lowerimp and " + list.LowerIMP + " >= upperimp and " + list.UpperIMP + ">=upperimp and " + list.UpperIMP + ">=lowerimp) "
+                       + " or (" + list.LowerIMP + "<= lowerimp and " + list.LowerIMP + " <= upperimp and " + list.UpperIMP + "<=upperimp and " + list.UpperIMP + "<=lowerimp))";
+            DataTable dt = MysqlHelp.ExecuteReader(MysqlHelp.MySqlconn, sql);
+            //设定值不在参数内的参数个数
+            int count = dt == null ? 0 : dt.Rows.Count;
+            sql = "select count(*) from js_mes.rt_mid_flash_label where  ProductType = '" + list.ProductType + "' and pmax = '"+list.Pmax+"'  ";
+            dt = MysqlHelp.ExecuteReader(MysqlHelp.MySqlconn, sql);
+            //所有参数的个数
+            int countall = Convert.ToInt32(dt.Rows[0][0].ToString());
+            if (count == countall)
+            {
+                return "fail";
+            }
+            else
+            {
+                return "success";
+            }
+        }
+
+        //是否在配置电流挡位
+        //功率需要已经存在才表示正在配置电流挡位
+        public string isConfigIPM(DataList list)
+        {
+            string sql = " select * from js_mes.rt_mid_flash_label where ProductType='"+list.ProductType+"' and pmax = '"+list.Pmax+"' and upperpower = "+list.Upperrpower+" and lowerpower = "+list.Lowerpower+" ;";
+            DataTable dt = MysqlHelp.ExecuteReader(MysqlHelp.MySqlconn, sql);
+            if (dt.Rows.Count > 0)
+            {
+                return "success";
+            }
+            else
+            {
+                return "fail";
+            }
+
+        }
+
         public string Exist(DataList list)
         {
             string result = "";

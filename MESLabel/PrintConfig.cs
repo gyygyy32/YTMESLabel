@@ -55,6 +55,10 @@ namespace MESLabel
             txtLowerPower.Text = grd.Rows[e.RowIndex].Cells["LowerPower"].Value.ToString();
             //增加产品族 add by lei.xue on 2017-7-30
             txtProductType.Text = grd.Rows[e.RowIndex].Cells["ProductType"].Value.ToString();
+            ddlIType.Text = grd.Rows[e.RowIndex].Cells["IType"].Value.ToString();
+            txtIGrade.Text = grd.Rows[e.RowIndex].Cells["IGrade"].Value.ToString();
+            txtLowerIPM.Text = grd.Rows[e.RowIndex].Cells["LOWERIPM"].Value.ToString();
+            txtUpperIPM.Text = grd.Rows[e.RowIndex].Cells["UPPERIPM"].Value.ToString();
 
         }
 
@@ -88,11 +92,38 @@ namespace MESLabel
             list.Volmax = txtVolmax.Text;
             list.Fusemax = txtFusemax.Text;
             list.ProductType = txtProductType.Text;
+            //add by xue lie on 2018-5-12
+            list.IGrade = txtIGrade.Text;
+            list.IType = ddlIType.Text;
+            list.LowerIMP = txtLowerIPM.Text;
+            list.UpperIMP = txtUpperPower.Text;
          
             if (crud.Exist(list) == "success")
             {
-                MessageBox.Show("该范围已经存在，请重新输入！");
-                return;
+                //是否正在配置电流挡位
+                if (txtIGrade.Text != "" && ddlIType.Text != "" && txtLowerIPM.Text != "" && txtLowerPower.Text != "")
+                {
+                    if (crud.isConfigIPM(list) == "success")
+                    {
+                        if (crud.ExistIMP(list) == "success")
+                        {
+                            MessageBox.Show("该电流范围已经存在，请重新输入！");
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("该功率范围已经存在，请重新输入！");
+                        return;
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("该功率范围已经存在，请重新输入！");
+                    return;
+                }
+                
             }
 
             if (crud.Add(list) == "success")
@@ -181,6 +212,10 @@ namespace MESLabel
             list.Volmax = txtVolmax.Text;
             list.Fusemax = txtFusemax.Text;
             list.ProductType = txtProductType.Text;
+            list.IType = ddlIType.SelectedText;
+            list.IGrade = txtIGrade.Text;
+            list.LowerIMP = txtLowerIPM.Text;
+            list.UpperIMP = txtUpperIPM.Text;
 
             if (crud.Delete(list) == "success")
             {

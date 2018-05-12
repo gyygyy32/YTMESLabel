@@ -20,6 +20,11 @@ namespace MESLabel
         // add by lei.xue on 2017-7-30
         private string _producttype; //产品族
 
+        public string UpperIMP { get; set; }
+        public string LowerIMP { get; set; }
+        public string IGrade { get; set; }
+        public string IType { get; set; }
+
         public string ProductType 
         {
             get { return _producttype; }
