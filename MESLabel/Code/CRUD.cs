@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data;
-
+using System.Configuration;
+using System.Reflection;
 namespace MESLabel
 {
 
@@ -15,7 +16,7 @@ namespace MESLabel
         {
             MysqlHelp = new DBOperation();
             MysqlHelp.Result = "";
-            MysqlHelp.ServerIP = "182.61.37.23";//172.16.2.19//192.168.10.43
+            MysqlHelp.ServerIP = System.Configuration.ConfigurationManager.AppSettings["IP"].ToString();//"182.61.37.23";//172.16.2.19//192.168.10.43
             MysqlHelp.DBUserName = "mesadmin";//DES.string_Decrypt("09A6000CDFC0FC659A6A174D0938F7E1");// "mesadmin";
             MysqlHelp.DBPassWord = "1qAZ2wSX"; //DES.string_Decrypt("FC4BA246016DE7AFC02B1F2B36337228");// "1qAZ2wSX";
             MysqlHelp.DB = "js_mes";
@@ -40,7 +41,7 @@ namespace MESLabel
         public string QueryIGrade(string ProductType, string Pmax, string Isc, string Imp)
         {
             //==========1查询电流配置类型=====================================
-            string sql = " select * from js_mes.rt_mid_flash_label where producttype='" + ProductType + "' and pmax='" + Pmax + "';";
+            string sql = " select IType from js_mes.rt_mid_flash_label where producttype='" + ProductType + "' and pmax='" + Pmax + "';";
             DataTable dt = MysqlHelp.ExecuteReader(MysqlHelp.MySqlconn, sql);
             string IType = "";
             string Ipara = "";

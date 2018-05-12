@@ -74,7 +74,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>5Wd5c8ivLVuJWzhKPSnh/Gbujj4=</dsig:DigestValue>
+        <dsig:DigestValue>0aaop5Qa3c5ix476+ZdtKK/l/CY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -94,6 +94,15 @@
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
       <dsig:DigestValue>0KFL6Idmjv7AcXJKU0mPfB9EqQs=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="YTMESLabel.exe.config" size="258">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>dDAZrH5weiFVrRf1w//RpVR4xCo=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

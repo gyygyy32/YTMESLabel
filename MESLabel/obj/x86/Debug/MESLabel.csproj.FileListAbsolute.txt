@@ -31,7 +31,6 @@ C:\01 Code\02 HL\YTMESLabel\MESLabel\bin\Debug\YTMESLabel.pdb
 C:\01 Code\02 HL\YTMESLabel\MESLabel\bin\Debug\MySql.Data.dll
 C:\01 Code\02 HL\YTMESLabel\MESLabel\bin\Debug\System.Data.OracleClient.dll
 C:\01 Code\02 HL\YTMESLabel\MESLabel\bin\Debug\zh-CHS\System.Data.OracleClient.resources.dll
-C:\01 Code\02 HL\YTMESLabel\MESLabel\obj\x86\Debug\MESLabel.csprojResolveAssemblyReference.cache
 C:\01 Code\02 HL\YTMESLabel\MESLabel\obj\x86\Debug\MESLabel.LabelPrint.resources
 C:\01 Code\02 HL\YTMESLabel\MESLabel\obj\x86\Debug\MESLabel.MainForm.resources
 C:\01 Code\02 HL\YTMESLabel\MESLabel\obj\x86\Debug\MESLabel.PrintConfig.resources
@@ -43,3 +42,4 @@ C:\01 Code\02 HL\YTMESLabel\MESLabel\obj\x86\Debug\YTMESLabel.application
 C:\01 Code\02 HL\YTMESLabel\MESLabel\obj\x86\Debug\MESLabel.csproj.CopyComplete
 C:\01 Code\02 HL\YTMESLabel\MESLabel\obj\x86\Debug\YTMESLabel.exe
 C:\01 Code\02 HL\YTMESLabel\MESLabel\obj\x86\Debug\YTMESLabel.pdb
+C:\01 Code\02 HL\YTMESLabel\MESLabel\bin\Debug\YTMESLabel.exe.config

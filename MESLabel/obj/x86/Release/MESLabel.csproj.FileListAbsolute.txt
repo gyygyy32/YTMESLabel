@@ -31,3 +31,4 @@ C:\01 Code\02 HL\YTMESLabel\MESLabel\bin\Release\zh-CHS\System.Data.OracleClient
 C:\01 Code\02 HL\YTMESLabel\MESLabel\obj\x86\Release\YTMESLabel.exe.manifest
 C:\01 Code\02 HL\YTMESLabel\MESLabel\obj\x86\Release\YTMESLabel.application
 C:\01 Code\02 HL\YTMESLabel\MESLabel\obj\x86\Release\MESLabel.csproj.CopyComplete
+C:\01 Code\02 HL\YTMESLabel\MESLabel\bin\Release\YTMESLabel.exe.config
