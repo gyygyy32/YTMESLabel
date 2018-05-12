@@ -57,8 +57,8 @@ namespace MESLabel
             txtProductType.Text = grd.Rows[e.RowIndex].Cells["ProductType"].Value.ToString();
             ddlIType.Text = grd.Rows[e.RowIndex].Cells["IType"].Value.ToString();
             txtIGrade.Text = grd.Rows[e.RowIndex].Cells["IGrade"].Value.ToString();
-            txtLowerIPM.Text = grd.Rows[e.RowIndex].Cells["LOWERIPM"].Value.ToString();
-            txtUpperIPM.Text = grd.Rows[e.RowIndex].Cells["UPPERIPM"].Value.ToString();
+            txtLowerIPM.Text = grd.Rows[e.RowIndex].Cells["LOWERIMP"].Value.ToString();
+            txtUpperIPM.Text = grd.Rows[e.RowIndex].Cells["UPPERIMP"].Value.ToString();
 
         }
 
@@ -80,6 +80,24 @@ namespace MESLabel
                 return;
             }
 
+
+            //=====电流合法性检查==========================
+            if (ddlIType.Text == "")
+            {
+                txtIGrade.Text = "";
+                txtLowerIPM.Text = "";
+                txtUpperIPM.Text = "";
+            }
+            else
+            {
+                if (txtIGrade.Text == "" || txtLowerIPM.Text == "" || txtUpperIPM.Text == "")
+                {
+                    MessageBox.Show("请先输入电流参数!");
+                    return;
+                }
+            }
+
+
             DataList list = new DataList();
             list.Upperrpower = txtUpperPower.Text;
             list.Lowerpower = txtLowerPower.Text;
@@ -96,7 +114,7 @@ namespace MESLabel
             list.IGrade = txtIGrade.Text;
             list.IType = ddlIType.Text;
             list.LowerIMP = txtLowerIPM.Text;
-            list.UpperIMP = txtUpperPower.Text;
+            list.UpperIMP = txtUpperIPM.Text;
          
             if (crud.Exist(list) == "success")
             {
@@ -105,9 +123,15 @@ namespace MESLabel
                 {
                     if (crud.isConfigIPM(list) == "success")
                     {
-                        if (crud.ExistIMP(list) == "success")
+                        string strRes = crud.ExistIMP(list);
+                        if (strRes == "success")
                         {
                             MessageBox.Show("该电流范围已经存在，请重新输入！");
+                            return;
+                        }
+                        else if (strRes == "Imp和Isc只能配置一种")
+                        {
+                            MessageBox.Show("Imp和Isc只能配置一种");
                             return;
                         }
                     }

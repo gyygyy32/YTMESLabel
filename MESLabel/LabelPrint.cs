@@ -68,6 +68,16 @@ namespace MESLabel
                     txtFusemax.Text = dt.Rows[0]["Fusemax"].ToString();
                     txtIsc.Text = dt.Rows[0]["Isc"].ToString();
                     txtImp.Text = dt.Rows[0]["Imp"].ToString();
+
+                    //查询电流挡位
+                    string strGrade= objCRUD.QueryIGrade(txtProductType.Text, strPmax, txtIsc.Text, txtImp.Text);
+                    if (strGrade == "fail")
+                    {
+                        txtLog.Text = txtModuleID.Text+"未查询到电流配置信息" + "\r\n" + txtLog.Text;
+                    }
+                    else {
+                        txtIGrade.Text = strGrade;
+                    }
                 }
                 else
                 {
@@ -101,7 +111,8 @@ namespace MESLabel
                                txtProductType.Text+","+
                                txtWeight.Text+","+
                                txtSize.Text+","+
-                               txtModuleID.Text);
+                               txtModuleID.Text+","+
+                               txtIGrade.Text);
                 file.Close();
             }
 
@@ -128,10 +139,7 @@ namespace MESLabel
             }
         }
 
-        private void txtModuleID_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+       
 
         private void LabelPrint_Load(object sender, EventArgs e)
         {
@@ -160,6 +168,8 @@ namespace MESLabel
             //txtWeight.Text = "";
         }
 
-     
+        
+
+        
     }
 }

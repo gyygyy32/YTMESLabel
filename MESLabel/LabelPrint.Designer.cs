@@ -56,6 +56,8 @@
             this.label13 = new System.Windows.Forms.Label();
             this.DDLTemplate = new System.Windows.Forms.ComboBox();
             this.txtLog = new System.Windows.Forms.TextBox();
+            this.txtIGrade = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -77,7 +79,6 @@
             this.txtModuleID.Name = "txtModuleID";
             this.txtModuleID.Size = new System.Drawing.Size(340, 37);
             this.txtModuleID.TabIndex = 1;
-            this.txtModuleID.TextChanged += new System.EventHandler(this.txtModuleID_TextChanged);
             this.txtModuleID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtModuleID_KeyPress);
             // 
             // txtPmax
@@ -264,7 +265,7 @@
             // txtProductType
             // 
             this.txtProductType.Font = new System.Drawing.Font("宋体", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtProductType.Location = new System.Drawing.Point(670, 25);
+            this.txtProductType.Location = new System.Drawing.Point(694, 23);
             this.txtProductType.Margin = new System.Windows.Forms.Padding(4);
             this.txtProductType.Name = "txtProductType";
             this.txtProductType.ReadOnly = true;
@@ -285,7 +286,7 @@
             // txtSize
             // 
             this.txtSize.Font = new System.Drawing.Font("宋体", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtSize.Location = new System.Drawing.Point(670, 71);
+            this.txtSize.Location = new System.Drawing.Point(694, 69);
             this.txtSize.Margin = new System.Windows.Forms.Padding(4);
             this.txtSize.Name = "txtSize";
             this.txtSize.ReadOnly = true;
@@ -306,7 +307,7 @@
             // txtWeight
             // 
             this.txtWeight.Font = new System.Drawing.Font("宋体", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtWeight.Location = new System.Drawing.Point(670, 118);
+            this.txtWeight.Location = new System.Drawing.Point(694, 116);
             this.txtWeight.Margin = new System.Windows.Forms.Padding(4);
             this.txtWeight.Name = "txtWeight";
             this.txtWeight.ReadOnly = true;
@@ -340,7 +341,7 @@
             this.DDLTemplate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.DDLTemplate.Font = new System.Drawing.Font("宋体", 15.75F);
             this.DDLTemplate.FormattingEnabled = true;
-            this.DDLTemplate.Location = new System.Drawing.Point(673, 164);
+            this.DDLTemplate.Location = new System.Drawing.Point(694, 162);
             this.DDLTemplate.Name = "DDLTemplate";
             this.DDLTemplate.Size = new System.Drawing.Size(337, 34);
             this.DDLTemplate.TabIndex = 26;
@@ -354,11 +355,34 @@
             this.txtLog.Size = new System.Drawing.Size(347, 499);
             this.txtLog.TabIndex = 27;
             // 
+            // txtIGrade
+            // 
+            this.txtIGrade.Font = new System.Drawing.Font("宋体", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtIGrade.Location = new System.Drawing.Point(694, 210);
+            this.txtIGrade.Margin = new System.Windows.Forms.Padding(4);
+            this.txtIGrade.Name = "txtIGrade";
+            this.txtIGrade.ReadOnly = true;
+            this.txtIGrade.Size = new System.Drawing.Size(340, 37);
+            this.txtIGrade.TabIndex = 29;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("微软雅黑", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label14.Location = new System.Drawing.Point(559, 210);
+            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(137, 39);
+            this.label14.TabIndex = 28;
+            this.label14.Text = "电流挡位";
+            // 
             // LabelPrint
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1400, 534);
+            this.Controls.Add(this.txtIGrade);
+            this.Controls.Add(this.label14);
             this.Controls.Add(this.txtLog);
             this.Controls.Add(this.DDLTemplate);
             this.Controls.Add(this.label13);
@@ -426,6 +450,8 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.ComboBox DDLTemplate;
         private System.Windows.Forms.TextBox txtLog;
+        private System.Windows.Forms.TextBox txtIGrade;
+        private System.Windows.Forms.Label label14;
     }
 }
 

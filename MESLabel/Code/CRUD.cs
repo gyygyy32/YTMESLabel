@@ -36,6 +36,44 @@ namespace MESLabel
             return dt = MysqlHelp.ExecuteReader(MysqlHelp.MySqlconn, sql);
         }
 
+        //查询电流挡位 add by xue lei on 2018-5-12
+        public string QueryIGrade(string ProductType, string Pmax, string Isc, string Imp)
+        {
+            //==========1查询电流配置类型=====================================
+            string sql = " select * from js_mes.rt_mid_flash_label where producttype='" + ProductType + "' and pmax='" + Pmax + "';";
+            DataTable dt = MysqlHelp.ExecuteReader(MysqlHelp.MySqlconn, sql);
+            string IType = "";
+            string Ipara = "";
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                
+                IType = dt.Rows[0]["IType"].ToString();
+            }
+
+            if (IType == "Isc")
+            {
+                Ipara = Isc;
+            }
+            else if (IType == "Imp")
+            {
+                Ipara = Imp;
+            }
+
+
+            //==========2查询电流挡位==========================================
+            sql = " select IGrade from js_mes.rt_mid_flash_label where producttype='" + ProductType + "' and pmax='" + Pmax + "' and upperimp>" + Ipara + " and lowerimp<=" + Ipara + " ; ";
+            DataTable dtIGrade = MysqlHelp.ExecuteReader(MysqlHelp.MySqlconn, sql);
+            if (dtIGrade != null && dtIGrade.Rows.Count > 0)
+            {
+                return dtIGrade.Rows[0][0].ToString();
+            }
+            else
+            {
+                return "fail";
+            }
+
+        }
+
 
         public string Add(DataList list)
         {
@@ -75,8 +113,8 @@ namespace MESLabel
             + "'" + "Admin" + "', "
             + "'" + list.IType + "', "
             + "'" + list.IGrade + "', "
-            + "" + list.UpperIMP + ", "
-            + "" + list.LowerIMP + ", "
+            + "" + (list.UpperIMP ==""?"null":list.UpperIMP) + ", "
+            + "" + (list.LowerIMP == "" ? "null" : list.LowerIMP) + ", "
             + " sysdate()); ";
 
             MysqlHelp.ExecuteNonquery(MysqlHelp.MySqlconn, sql, ref result);
@@ -94,11 +132,23 @@ namespace MESLabel
         public string ExistIMP(DataList list)
         {
             string result = "";
-            string sql = "select Pmax from js_mes.rt_mid_flash_label where  ProductType = '" + list.ProductType + "' and pmax='" + list.Pmax + "'   and( (" + list.LowerIMP + ">= lowerimp and " + list.LowerIMP + " >= upperimp and " + list.UpperIMP + ">=upperimp and " + list.UpperIMP + ">=lowerimp) "
+            string IType = "";
+            string sql = "select Pmax,Itype from js_mes.rt_mid_flash_label where  ProductType = '" + list.ProductType + "' and pmax='" + list.Pmax + "'   and( (" + list.LowerIMP + ">= lowerimp and " + list.LowerIMP + " >= upperimp and " + list.UpperIMP + ">=upperimp and " + list.UpperIMP + ">=lowerimp) "
                        + " or (" + list.LowerIMP + "<= lowerimp and " + list.LowerIMP + " <= upperimp and " + list.UpperIMP + "<=upperimp and " + list.UpperIMP + "<=lowerimp))";
             DataTable dt = MysqlHelp.ExecuteReader(MysqlHelp.MySqlconn, sql);
             //设定值不在参数内的参数个数
             int count = dt == null ? 0 : dt.Rows.Count;
+ 
+            //Imp和Isc只能配置一种 
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                IType = dt.Rows[0]["IType"].ToString();
+                if (IType != list.IType)
+                {
+                    return "Imp和Isc只能配置一种";
+                }
+            }
+
             sql = "select count(*) from js_mes.rt_mid_flash_label where  ProductType = '" + list.ProductType + "' and pmax = '"+list.Pmax+"'  ";
             dt = MysqlHelp.ExecuteReader(MysqlHelp.MySqlconn, sql);
             //所有参数的个数
@@ -113,13 +163,15 @@ namespace MESLabel
             }
         }
 
+        
+
         //是否在配置电流挡位
         //功率需要已经存在才表示正在配置电流挡位
         public string isConfigIPM(DataList list)
         {
             string sql = " select * from js_mes.rt_mid_flash_label where ProductType='"+list.ProductType+"' and pmax = '"+list.Pmax+"' and upperpower = "+list.Upperrpower+" and lowerpower = "+list.Lowerpower+" ;";
             DataTable dt = MysqlHelp.ExecuteReader(MysqlHelp.MySqlconn, sql);
-            if (dt.Rows.Count > 0)
+            if (dt!=null && dt.Rows.Count > 0)
             {
                 return "success";
             }
@@ -132,6 +184,15 @@ namespace MESLabel
 
         public string Exist(DataList list)
         {
+            //判断功率挡位是否已经设置 add by xue lei on 2018-5-12
+            string sql1 = "select pmax from js_mes.rt_mid_flash_label where  ProductType = '" + list.ProductType + "' and pmax = '" + list.Pmax + "' ";
+            DataTable dt1 = MysqlHelp.ExecuteReader(MysqlHelp.MySqlconn, sql1);
+            if (dt1 != null && dt1.Rows.Count > 0)
+            {
+                return "success";
+            }
+            
+
             string result = "";
             string sql = "select Pmax from js_mes.rt_mid_flash_label where  ProductType = '"+list.ProductType+"' and( (" + list.Lowerpower + ">= lowerpower and " + list.Lowerpower + " >= upperpower and " + list.Upperrpower + ">=upperpower and " + list.Upperrpower + ">=lowerpower) "
                        + " or (" + list.Lowerpower + "<= lowerpower and " + list.Lowerpower + " <= upperpower and " + list.Upperrpower + "<=upperpower and " + list.Upperrpower + "<=lowerpower))";
@@ -198,7 +259,7 @@ namespace MESLabel
         }
         public DataTable QueryConfig()
         {
-            string sql = "select * from `js_mes`.`rt_mid_flash_label` ";
+            string sql = "select * from `js_mes`.`rt_mid_flash_label` order by producttype,pmax ";
             return MysqlHelp.ExecuteReader(MysqlHelp.MySqlconn, sql);
 
         }
