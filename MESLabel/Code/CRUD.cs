@@ -62,7 +62,7 @@ namespace MESLabel
 
 
             //==========2查询电流挡位==========================================
-            sql = " select IGrade from js_mes.rt_mid_flash_label where producttype='" + ProductType + "' and pmax='" + Pmax + "' and upperimp>" + Ipara + " and lowerimp<=" + Ipara + " ; ";
+            sql = " select IGrade from js_mes.rt_mid_flash_label where producttype='" + ProductType + "' and pmax='" + Pmax + "' and upperimp>" + (Ipara==""?"null":Ipara) + " and lowerimp<=" + (Ipara == "" ? "null" : Ipara) + " ; ";
             DataTable dtIGrade = MysqlHelp.ExecuteReader(MysqlHelp.MySqlconn, sql);
             if (dtIGrade != null && dtIGrade.Rows.Count > 0)
             {
@@ -246,7 +246,8 @@ namespace MESLabel
             string sql = "DELETE FROM `js_mes`.`rt_mid_flash_label` " +
             " WHERE upperpower = " + list.Upperrpower + " and lowerpower = " + list.Lowerpower +
                 //增加产品族和pmax条件
-            " and Pmax ='"+list.Pmax+"' and ProductType = '"+list.ProductType+"' ";
+            " and Pmax ='"+list.Pmax+"' and ProductType = '"+list.ProductType+"' " +
+            " and IType = '"+list.IType+"' and IGrade = '"+list.IGrade+"' ";
 
             MysqlHelp.ExecuteNonquery(MysqlHelp.MySqlconn, sql, ref result);
             if (result.StartsWith("Success") == true)

@@ -43,3 +43,4 @@ C:\01 Code\02 HL\YTMESLabel\MESLabel\obj\x86\Debug\MESLabel.csproj.CopyComplete
 C:\01 Code\02 HL\YTMESLabel\MESLabel\obj\x86\Debug\YTMESLabel.exe
 C:\01 Code\02 HL\YTMESLabel\MESLabel\obj\x86\Debug\YTMESLabel.pdb
 C:\01 Code\02 HL\YTMESLabel\MESLabel\bin\Debug\YTMESLabel.exe.config
+C:\01 Code\02 HL\YTMESLabel\MESLabel\obj\x86\Debug\MESLabel.csprojResolveAssemblyReference.cache

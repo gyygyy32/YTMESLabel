@@ -12,7 +12,6 @@ D:\Code\C#\MESLabel\MESLabel\MESLabel\obj\x86\Release\YTMESLabel.exe.manifest
 D:\Code\C#\MESLabel\MESLabel\MESLabel\obj\x86\Release\YTMESLabel.application
 D:\Code\C#\MESLabel\MESLabel\MESLabel\obj\x86\Release\YTMESLabel.exe
 D:\Code\C#\MESLabel\MESLabel\MESLabel\obj\x86\Release\YTMESLabel.pdb
-C:\01 Code\02 HL\YTMESLabel\MESLabel\obj\x86\Release\MESLabel.csprojResolveAssemblyReference.cache
 C:\01 Code\02 HL\YTMESLabel\MESLabel\obj\x86\Release\MESLabel.LabelPrint.resources
 C:\01 Code\02 HL\YTMESLabel\MESLabel\obj\x86\Release\MESLabel.MainForm.resources
 C:\01 Code\02 HL\YTMESLabel\MESLabel\obj\x86\Release\MESLabel.PrintConfig.resources

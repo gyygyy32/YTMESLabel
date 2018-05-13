@@ -236,7 +236,7 @@ namespace MESLabel
             list.Volmax = txtVolmax.Text;
             list.Fusemax = txtFusemax.Text;
             list.ProductType = txtProductType.Text;
-            list.IType = ddlIType.SelectedText;
+            list.IType = ddlIType.Text;
             list.IGrade = txtIGrade.Text;
             list.LowerIMP = txtLowerIPM.Text;
             list.UpperIMP = txtUpperIPM.Text;
